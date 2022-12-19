@@ -1,0 +1,16 @@
+{
+  "name": "SimpleTask",
+  "private": true,
+  "dependencies": {
+    "@rails/webpacker": "^5.4.3",
+    "rails_admin": "3.1.1",
+    "sass": "^1.56.1"
+  },
+  "version": "0.1.0",
+  "devDependencies": {
+    "webpack-dev-server": "^4.11.1"
+  },
+  "resolutions": {
+    "rails_admin/@fortawesome/fontawesome-free": "^5.15.0"
+  }
+}
