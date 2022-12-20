@@ -1,40 +1,25 @@
 <p id="notice"><%= notice %></p>
 
-  <table class="table">
-    <thead>
-      <tr>
+<p>
+  <b>Name:</b>
+  <%= @task.name %>
+</p>
 
-        <th>
-          <b>Name:</b>
-          <%# <%= @task.name %> 
-        </th>
+<p>
+  <b>Description:</b>
+  <%= @task.description %>
+</p>
 
-        <th>
-          <b>Description:</b>
-          <%# <%= @task.description %> 
-        </th>
+<p>
+  <b>Status:</b>
+  <%= @task.status %>
+</p>
 
-        <th>
-          <b>Status:</b>
-          <%# <%= @task.status %> 
-        </th>
-
-        <th>
-          <b>Project:</b>
-          <%# <%= @task.project %> 
-        </th>
-      </tr>
-     </thead> 
-     <tbody>
-         <tr>
-            <td>  <%= @task.name %></td>
-            <td>  <%= @task.description %></td>
-            <td>  <%= @task.status %></td>
-            <td>  <%= @task.project %></td>
-      </tbody>
-    </table>  
+<p>
+  <b>Project:</b>
+  <%= @task.project %>
+</p>
 
 
 <%= link_to 'Edit', edit_project_task_path(@task.project, @task) %> |
 <%= link_to 'Back', project_tasks_path(@task.project) %>
-
