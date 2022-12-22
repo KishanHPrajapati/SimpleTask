@@ -1,0 +1,30 @@
+<h1>Today's Task</h1>
+<% if current_user.admin? %>
+    <% @tasks.each do |user, tasks| %>
+    <h3><%= user %></h3>
+    <ul>
+        <% tasks.each do |task| %>
+        <li>
+            <h5><%= task.name %></h5>
+            <p>
+            <b>Description:</b> <%= task.description %></br>
+            <b>Project:</b> <%= task.project.name %></br>
+            <b>Status:</b> <%= task.status %>
+            </p>
+        </li>
+        <% end %>
+    </ul>
+    <% end %>
+<% else %>
+    <h3>Welcome <%= current_user.name %></h3>
+    <% @tasks.each do |task| %>
+        <li>
+            <h5><%= task.name %></h5>
+            <p>
+            <b>Description:</b> <%= task.description %></br>
+            <b>Project:</b> <%= task.project.name %></br>
+            <b>Status:</b> <%= task.status %>
+            </p>
+        </li>
+    <% end %>
+<% end %>

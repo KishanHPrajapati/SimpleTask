@@ -5,7 +5,7 @@
       <span><%= @project.name %></span>
       <div>
         <%= link_to 'Edit', edit_project_path(@project), class: 'btn btn-light' %>
-        <%= link_to 'Destroy', @project, method: :delete, class: 'btn btn-dark', data: { confirm: 'Are you sure?' } %>
+        <%= button_to 'Destroy', @project, method: :delete, class: 'btn btn-dark', data: { confirm: 'Are you sure?' } %>
       </div>
     </h2>
 
@@ -26,6 +26,10 @@
         <%= f.hidden_field :status, value: 'not-started' %>
         <div class="input-group">
           <%= f.text_field :name, class: 'form-control', placeholder: 'Enter task name...' %>
+           <%= f.text_area :description, class: 'form-control', placeholder: 'Description' %>
+          <%= f.select :status, Task::STATUS_OPTIONS, {}, class: 'form-control', placeholder: 'Status' %>
+          <%= f.datetime_field :start_time, class:'form-control',placeholder: ' task start_time...' %>
+          <%= f.datetime_field :end_time, class: 'form-control',placeholder: ' task end_time ...' %>
           <div class="input-group-append">
             <%= f.submit class: 'btn btn-primary' %>
           </div>
@@ -39,10 +43,10 @@
         <div class="card mb-3">
           <div class="card-body">
             <div class="d-flex justify-content-between">
-              <span class="badge badge-<%= task.badge_color %> mb-3"><%= task.status %></span>
+              <span class="badge badge-<%= task.badge_color %>"><%= task.status %></span>
               <div>
                 <%= link_to 'Edit', edit_project_task_path(task.project, task), class: 'btn btn-light btn-sm' %>
-                <%= link_to 'Destroy', [task.project, task], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-dark btn-sm' %>
+                <%= button_to 'Destroy', project_task_path(task.project, task), method: :delete, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn btn-dark btn-sm' %>
               </div>
             </div>
             <h5 class='card-title mb-2'>

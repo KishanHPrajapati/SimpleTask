@@ -1,0 +1,45 @@
+<div class="container">
+   <% if user_signed_in? %>
+    <%= button_to "Logout", destroy_user_session_path, data: {turbo_method: :delete }, method: :delete, style: "background: none; border: none;", class: "nav-link text-dark p-3" %>
+   <% else %>
+    <a class="btn btn-primary" aria-current="page" href="/users/sign_in">Sign in</a>
+   <% end %>
+</div>
+
+ <%= month_calendar(events: @tasks) do |date, tasks| %>
+    <div class="day">
+        <%= link_to "/projects" do %>
+          <%= date.day %>
+        <% end%>
+      
+    </div>
+    <% tasks.each do |task| %>
+      <div class="card">
+        <%= link_to "/projects"+"/#{task.project.id.to_s}" do %>
+            <h5 class="card-header">
+              <%= task.name %>
+            </h5>
+        <%end%>
+      </div>
+      <div class="card-body">
+        <p class="card-text">
+          <%= task.description %>
+        </p>
+      </div>
+    <% end %>
+  <% end %>
+ 
+    <div class="admin-calendar p-5">
+        <%= month_calendar do |date| %>
+            <div class="date-container">
+                <%# <% if current_user.present? %> 
+                    <%# <%= @user.all %> 
+                    <div class="day">
+                        <%= date.day %>
+                    </div>
+                    <%# <% end %> 
+                <%# <%end%>
+            </div>
+        <% end %>
+    </div>
+ 
